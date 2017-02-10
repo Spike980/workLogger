@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -31,9 +30,9 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'annotate'
-  gem 'heroku_san'
-  gem 'debase'
+  # gem 'annotate'
+  # gem 'heroku_san'
+  # gem 'debase'
 end
 
 # For Heroku

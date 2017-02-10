@@ -1,6 +1,6 @@
-<div ng-controller='CreateUsersController as vm' class="row col-xs-12 col-md-6">
+<div ng-controller='CreateUsersController as vm' class="row col-xs-12 col-md-6 col-md-offset-3 col-xs-offset-0">
 
-  <div class="panel panel-default">
+  <div class="panel panel-info">
 
     <div class="panel-heading">
       <h3 class="panel-title">Create new user</h3>
@@ -11,13 +11,13 @@
       <form name="form" ng-submit="form.$valid && vm.create()">
         <email-form form="form" model="vm.newUser"></email-form>
         <password-form form="form" model="vm.newUser" include-confirmation="true"></password-form>
-        <button ng-disabled="form.$invalid" class="btn btn-primary" type="submit">Create user</button>
-        <a ui-sref="login">Or login, if you have already created a user.</a>
-        <input type="datetime" />
+        <div class="text-center">
+          <button ng-disabled="form.$invalid" class="btn btn-primary" type="submit">Create user</button>
+          <br/>
+          <a ui-sref="login">Or login, if you have already created a user.</a>
+        </div>
       </form>
 
     </div>
   </div>
 </div>
-
-<div class="col-xs-0 col-md-6"></div>

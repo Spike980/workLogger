@@ -1,10 +1,10 @@
 <div ng-controller="GenericFormController as vm" class="form-group">
 
   <div class="form-group" ng-class="vm.error('password')">
-    <label class="form-label" for="password">Password</label>
+    <label class="form-label" for="password">Password:</label>
 
     <div class="controls">
-      <input id="password" name="password" type="password" minlength='6' ng-model="model.password"
+      <input id="password" name="password" type="password" minlength='6' class="form-control" ng-model="model.password"
              placeholder="Password"
              required/>
 
@@ -15,11 +15,11 @@
 
   <span ng-if="includeConfirmation">
     <div class="form-group" ng-class="vm.error('password_confirmation')">
-      <label class="form-label" for="password_confirmation">Password confirmation</label>
+      <label class="form-label" for="password_confirmation">Password confirmation:</label>
 
       <div class="controls">
         <input id="password_confirmation" name="password_confirmation" type="password"
-               ng-model="model.password_confirmation" compare-to="model.password"
+               ng-model="model.password_confirmation" class="form-control" compare-to="model.password"
                placeholder="Password confirmation" required/>
 
         <div class="help-block" ng-show="form.password_confirmation.$invalid && form.password_confirmation.$dirty"

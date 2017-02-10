@@ -21,3 +21,12 @@
 input {
     max-width: 100%;
 }
+
+#logo {
+	margin-top: -15px;
+}
+
+.navbar-default {
+	background: rgba(86, 149, 173, 0.55);
+	border-color: rgba(94, 189, 245, 0.61);
+}

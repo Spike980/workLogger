@@ -7,7 +7,8 @@ class Api::ProjectsController < ApiController
   end
 
   def create
-    respond_with :api, @user.projects.create(project_params)  
+  	@projects = @user.projects.create(project_params)
+    respond_with :api, @projects, :location => nil
   end
 
   def update

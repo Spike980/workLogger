@@ -1,0 +1,58 @@
+<div ng-controller="ProjectsController as vm">
+
+  <div class="panel panel-info col-xs-12">
+
+    <div class="row panel-heading">
+      <div class="col-xs-2">
+        <strong>Project Name</strong>
+      </div>
+      <div class="col-xs-2">
+        <button ng-click="vm.new()" type="button" class="btn btn-success">
+          <i class="fa fa-plus-circle fa-lg"></i>
+          New
+        </button>
+      </div>
+    </div>
+
+    <ul class="list-group">
+
+      <span ng-if="vm.newProject">
+        <li class="list-group-item row">
+          <form class="form-inline" ng-submit="vm.create()">
+            <project-form project="vm.newProject"></project-form>
+            <div class="col-xs-3">
+              <button ng-click="vm.newCancel()" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+        </li>
+      </span>
+
+      <li ng-repeat="project in vm.projects | orderBy: 'project_name'"
+          class="list-group-item row">
+
+          <span ng-if="project != vm.editedProjectMarker">
+            <div class="col-xs-2">
+              {{ project.project_name }}
+            </div>
+            <div class="col-xs-2">
+              <button ng-click="vm.edit(project)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
+              <button confirmed-click="vm.destroy(project)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
+              </button>
+            </div>
+          </span>
+
+          <span ng-if="project == vm.editedProjectMarker">
+            <form class="form-inline" ng-submit="vm.update()">
+              <project-form project="vm.clonedProject"></project-form>
+              <div class="col-xs-3">
+                <button ng-click="vm.editCancel()" class="btn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </span>
+
+      </li> <!-- end ng-repeat -->
+    </ul>
+  </div> <!-- end panel -->
+</div>

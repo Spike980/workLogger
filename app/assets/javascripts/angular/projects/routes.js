@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  angular.module('app.logs').config(config);
+  angular.module('app.projects').config(config);
 
   function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('logs');
+    $urlRouterProvider.otherwise('projects');
 
-    $stateProvider.state('logs', {
-      url: '/logs',
-      templateUrl: 'angular/logs/_logs.html',
+    $stateProvider.state('projects', {
+      url: '/projects',
+      templateUrl: 'angular/projects/_projects.html',
       resolve: {
         auth: ["$q", "currentUserService", function ($q, currentUserService) {
 

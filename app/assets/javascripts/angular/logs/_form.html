@@ -12,8 +12,8 @@
 </div>
 
 <div class="col-xs-2">
-  <select class="form-control" ng-model="log.project_id" ng-init="log.project_id = projects[0].project.id">
-    <option ng-repeat="project in projects" ng-hide="project.id == 'undefined'" value="{{ project.id }}">{{ project.project_name }}</option>
+  <select class="form-control" ng-model="log.project_id">
+    <option ng-repeat="project in projects" ng-selected="log.project_id == project.id" value="{{ project.id }}">{{ project.project_name }}</option>
   </select>
 </div>
 

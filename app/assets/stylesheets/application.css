@@ -32,12 +32,11 @@ input {
 	border-color: rgba(94, 189, 245, 0.61);
 }
 
-.navbar-brand {
-	background: white;
-}
 
 #brand-name {
 	font-family: 'Niconne', cursive;
 	font-weight: 800;
 	font-size: 1.5em;
+	color: #555;
 }
+

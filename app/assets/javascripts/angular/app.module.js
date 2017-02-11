@@ -5,13 +5,13 @@ angular.module('app',
     'templates',
     'ngMessages',
 
-    'app.jogs',
+    'app.logs',
     'app.login',
     'app.report',
     'app.users'
   ]);
 
-angular.module('app.jogs', [
+angular.module('app.logs', [
   'ui.bootstrap.datetimepicker',
   'ngResource'
 ]);

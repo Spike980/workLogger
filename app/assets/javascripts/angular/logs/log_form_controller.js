@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('app.jogs').controller('JogFormController', JogFormController);
+  angular.module('app.logs').controller('LogFormController', LogFormController);
 
-  function JogFormController($scope) {
+  function LogFormController($scope) {
     $scope.closeDropdown = function () {
       $scope.dropdownOpen = false;
     }

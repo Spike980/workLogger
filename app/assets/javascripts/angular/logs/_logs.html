@@ -1,6 +1,6 @@
-<div ng-controller="JogsController as vm">
+<div ng-controller="LogsController as vm">
 
-  <h3>Recent Jogs</h3>
+  <h3>Recent Logs</h3>
 
   <div class="btn-group" style="margin-bottom: 10px;">
     <label class="btn btn-info" ng-model="vm.rangeDescriptor" btn-radio="'all'">All</label>
@@ -34,10 +34,10 @@
 
     <ul class="list-group">
 
-      <span ng-if="vm.newJog">
+      <span ng-if="vm.newLog">
         <li class="list-group-item row">
           <form class="form-inline" ng-submit="vm.create()">
-            <jog-form jog="vm.newJog"></jog-form>
+            <log-form log="vm.newLog"></log-form>
             <div class="col-xs-3">
               <button ng-click="vm.newCancel()" class="btn">Cancel</button>
               <button type="submit" class="btn btn-primary">Create</button>
@@ -46,32 +46,32 @@
         </li>
       </span>
 
-      <li ng-repeat="jog in vm.jogs | dateRange:'start_time':vm.rangeDescriptor | orderBy: '-start_time'"
+      <li ng-repeat="log in vm.logs | dateRange:'start_time':vm.rangeDescriptor | orderBy: '-start_time'"
           class="list-group-item row">
 
-          <span ng-if="jog != vm.editedJogMarker">
+          <span ng-if="log != vm.editedLogMarker">
             <div class="col-xs-3">
-              {{ jog.start_time | date: 'short' }}
+              {{ log.start_time | date: 'short' }}
             </div>
             <div class="col-xs-2">
-              {{ jog.earning_in_rs | number : 2 }}
+              {{ log.earning_in_rs | number : 2 }}
             </div>
             <div class="col-xs-2">
-              {{ jog.time_in_hours | number : 2 }}
+              {{ log.time_in_hours | number : 2 }}
             </div>
             <div class="col-xs-2">
-              {{ jog.earning_in_rs / jog.time_in_hours | number : 2 }}
+              {{ log.earning_in_rs / log.time_in_hours | number : 2 }}
             </div>
             <div class="col-xs-3">
-              <button ng-click="vm.edit(jog)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
-              <button confirmed-click="vm.destroy(jog)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
+              <button ng-click="vm.edit(log)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
+              <button confirmed-click="vm.destroy(log)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
               </button>
             </div>
           </span>
 
-          <span ng-if="jog == vm.editedJogMarker">
+          <span ng-if="log == vm.editedLogMarker">
             <form class="form-inline" ng-submit="vm.update()">
-              <jog-form jog="vm.clonedJog"></jog-form>
+              <log-form log="vm.clonedLog"></log-form>
               <div class="col-xs-3">
                 <button ng-click="vm.editCancel()" class="btn">Cancel</button>
                 <button type="submit" class="btn btn-primary">Save</button>

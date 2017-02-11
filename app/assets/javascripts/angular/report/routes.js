@@ -9,7 +9,7 @@
         url: '/report',
         templateUrl: 'angular/report/_report.html',
         resolve: {
-          // TODO: this is an exact copy of what's in jogs/routes.js
+          // TODO: this is an exact copy of what's in logs/routes.js
           auth: ["$q", "currentUserService", function ($q, currentUserService) {
 
             var currentUser = currentUserService.getCurrentUser();

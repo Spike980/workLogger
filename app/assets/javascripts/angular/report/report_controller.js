@@ -3,45 +3,45 @@
 
   angular.module('app.report').controller('ReportController', ReportController);
 
-  function ReportController($scope, jogService) {
+  function ReportController($scope, logService) {
     var vm = this;
 
-    var jogResource = jogService.resourceForUser($scope.currentUserService.getCurrentUser());
+    var logResource = logService.resourceForUser($scope.currentUserService.getCurrentUser());
 
     // We can retrieve a collection from the server
-    jogResource.query(function (jogs) {
+    logResource.query(function (logs) {
 
       // TODO: move this out of the controller
-      jogs = _.map(jogs, function (jog) {
-        jog.start_week_millisecond = moment(jog.start_time).startOf('week').format('X');
-        return jog;
+      logs = _.map(logs, function (log) {
+        log.start_week_millisecond = moment(log.start_time).startOf('week').format('X');
+        return log;
       });
 
-      var joggingWeeks = _.groupBy(jogs, function (jog) {
-        return jog.start_week_millisecond;
+      var loggingWeeks = _.groupBy(logs, function (log) {
+        return log.start_week_millisecond;
       });
 
-      joggingWeeks = _.map(joggingWeeks, function (jogsArray, key) {
+      loggingWeeks = _.map(loggingWeeks, function (logsArray, key) {
 
         var week = {};
 
         week.start_week_millisecond = key;
         week.start_week_human = moment.unix(key).format('YYYY-M-D');
 
-        week.time_spent_running = _.reduce(jogsArray, function (memo, num) {
+        week.time_spent_working = _.reduce(logsArray, function (memo, num) {
           return memo + parseFloat(num.time_in_hours);
         }, 0);
 
-        week.distance_ran = _.reduce(jogsArray, function (memo, num) {
+        week.total_earned = _.reduce(logsArray, function (memo, num) {
           return memo + parseFloat(num.earning_in_rs);
         }, 0);
 
-        week.average_speed = week.distance_ran / week.time_spent_running;
+        week.average_earning = week.total_earned / week.time_spent_working;
 
         return week;
       });
 
-      vm.weeks = joggingWeeks;
+      vm.weeks = loggingWeeks;
     });
   }
 

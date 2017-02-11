@@ -1,0 +1,91 @@
+<div ng-controller="LogsController as vm">
+
+  <h3>Recent Logs</h3>
+
+  <div class="btn-group" style="margin-bottom: 10px;">
+    <label class="btn btn-info" ng-model="vm.rangeDescriptor" btn-radio="'all'">All</label>
+    <label class="btn btn-info" ng-model="vm.rangeDescriptor" btn-radio="'today'">Today</label>
+    <label class="btn btn-info" ng-model="vm.rangeDescriptor" btn-radio="'pastWeek'">Past Week</label>
+    <label class="btn btn-info" ng-model="vm.rangeDescriptor" btn-radio="'pastMonth'">Past Month</label>
+  </div>
+
+  <div class="panel panel-info col-xs-12">
+
+    <div class="row panel-heading">
+      <div class="col-xs-2">
+        <strong>Start Time</strong>
+      </div>
+      <div class="col-xs-2">
+        <strong>Project Name</strong>
+      </div>
+      <div class="col-xs-2">
+        <strong>Earning (In Rupees)</strong>
+      </div>
+      <div class="col-xs-2">
+        <strong>Time (Hours)</strong>
+      </div>
+      <div class="col-xs-2">
+        <strong>Rate (Rs./hr)</strong>
+      </div>
+      <div class="col-xs-2">
+        <button ng-click="vm.new()" type="button" class="btn btn-success">
+          <i class="fa fa-plus-circle fa-lg"></i>
+          New
+        </button>
+      </div>
+    </div>
+
+    <ul class="list-group">
+
+      <span ng-if="vm.newLog">
+        <li class="list-group-item row">
+          <form class="form-inline" ng-submit="vm.create()">
+            <log-form log="vm.newLog"></log-form>
+            <div class="col-xs-3">
+              <button ng-click="vm.newCancel()" class="btn">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+        </li>
+      </span>
+
+      <li ng-repeat="log in vm.logs | dateRange:'start_time':vm.rangeDescriptor | orderBy: '-start_time'"
+          class="list-group-item row">
+
+          <span ng-if="log != vm.editedLogMarker">
+            <div class="col-xs-2">
+              {{ log.start_time | date: 'short' }}
+            </div>
+            <div class="col-xs-2">
+              {{ log.project.project_name }}
+            </div>
+            <div class="col-xs-2">
+              {{ log.earning_in_rs | number : 2 }}
+            </div>
+            <div class="col-xs-2">
+              {{ log.time_in_hours | number : 2 }}
+            </div>
+            <div class="col-xs-2">
+              {{ log.earning_in_rs / log.time_in_hours | number : 2 }}
+            </div>
+            <div class="col-xs-2">
+              <button ng-click="vm.edit(log)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
+              <button confirmed-click="vm.destroy(log)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
+              </button>
+            </div>
+          </span>
+
+          <span ng-if="log == vm.editedLogMarker">
+            <form class="form-inline" ng-submit="vm.update()">
+              <log-form log="vm.clonedLog"></log-form>
+              <div class="col-xs-3">
+                <button ng-click="vm.editCancel()" class="btn">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </span>
+
+      </li> <!-- end ng-repeat -->
+    </ul>
+  </div> <!-- end panel -->
+</div>

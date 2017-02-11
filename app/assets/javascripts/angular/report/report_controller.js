@@ -33,7 +33,7 @@
         }, 0);
 
         week.distance_ran = _.reduce(jogsArray, function (memo, num) {
-          return memo + parseFloat(num.distance_in_miles);
+          return memo + parseFloat(num.earning_in_rs);
         }, 0);
 
         week.average_speed = week.distance_ran / week.time_spent_running;

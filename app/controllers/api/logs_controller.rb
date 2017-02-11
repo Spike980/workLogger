@@ -3,19 +3,19 @@ class Api::LogsController < ApiController
   before_filter :set_user
 
   def index
-    respond_with :api, @user.jogs.all
+    respond_with :api, @user.logs.all
   end
 
   def create
-    respond_with :api, @user.jogs.create(log_params), :location => nil
+    respond_with :api, @user.logs.create(log_params), :location => nil
   end
 
   def update
-    respond_with :api, @user.jogs.update(params[:id], jog_params)
+    respond_with :api, @user.logs.update(params[:id], log_params)
   end
 
   def destroy
-    respond_with :api, @user.jogs.destroy(params[:id])
+    respond_with :api, @user.logs.destroy(params[:id])
   end
 
   private
@@ -25,6 +25,6 @@ class Api::LogsController < ApiController
     end
 
     def log_params
-      params.require(:log).permit(:start_time, :user_id, :distance_in_miles, :time_in_hours)
+      params.require(:log).permit(:start_time, :user_id, :earning_in_rs, :time_in_hours)
     end
 end

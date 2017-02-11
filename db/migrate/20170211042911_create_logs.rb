@@ -1,9 +1,9 @@
-class CreateJogs < ActiveRecord::Migration
+class CreateLogs < ActiveRecord::Migration
   def change
-    create_table :jogs do |t|
+    create_table :logs do |t|
       t.integer :user_id
       t.datetime :start_time
-      t.decimal :distance_in_miles, :precision => 5, :scale => 2
+      t.decimal :earning_in_rs, :precision => 5, :scale => 2
       t.decimal :time_in_hours, :precision => 5, :scale => 2
 
       t.timestamps

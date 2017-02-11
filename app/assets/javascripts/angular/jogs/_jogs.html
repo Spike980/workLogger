@@ -54,13 +54,13 @@
               {{ jog.start_time | date: 'short' }}
             </div>
             <div class="col-xs-2">
-              {{ jog.distance_in_miles | number : 2 }}
+              {{ jog.earning_in_rs | number : 2 }}
             </div>
             <div class="col-xs-2">
               {{ jog.time_in_hours | number : 2 }}
             </div>
             <div class="col-xs-2">
-              {{ jog.distance_in_miles / jog.time_in_hours | number : 2 }}
+              {{ jog.earning_in_rs / jog.time_in_hours | number : 2 }}
             </div>
             <div class="col-xs-3">
               <button ng-click="vm.edit(jog)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>

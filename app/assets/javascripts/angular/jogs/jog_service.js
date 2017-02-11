@@ -6,7 +6,7 @@
   function jogService($resource) {
 
     var resourceForUser = function (user) {
-      return $resource('/api/users/:user_id/jogs/:id.json', { id: '@id', user_id: user.user_id }, {
+      return $resource('/api/users/:user_id/logs/:id.json', { id: '@id', user_id: user.user_id }, {
         update: {
           method: 'PATCH'
         }});

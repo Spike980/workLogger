@@ -7,10 +7,7 @@ class Api::LogsController < ApiController
   end
 
   def create
-    @logs = @user.logs.build(log_params)
-    @project = Project.create(project_name: params[:project][:project_name])
-    @logs.project_id = @project.id
-    @logs.save 
+    @logs = @user.logs.create(log_params)
     respond_with :api, @logs.as_json(include: :project), :location => nil
   end
 
@@ -33,6 +30,6 @@ class Api::LogsController < ApiController
     end
 
     def log_params
-      params.require(:log).permit(:start_time, :user_id, :earning_in_rs, :time_in_hours)
+      params.require(:log).permit(:start_time, :user_id, :earning_in_rs, :time_in_hours, :project_id)
     end
 end

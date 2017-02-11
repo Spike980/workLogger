@@ -1,21 +1,28 @@
 (function () {
   'use strict';
 
-  angular.module('app.logs').controller('LogsController', LogsController);
+  angular.module('app.logs').controller('LogsController',LogsController);
 
-  function LogsController($scope, logService) {
+  function LogsController($scope, logService, $http) {
     var vm = this;
 
     var logResource = logService.resourceForUser($scope.currentUserService.getCurrentUser());
 
     vm.logs = logResource.query();
 
+    vm.projects = {};
+
+    var user_id = $scope.currentUserService.getCurrentUser().user_id
+    $http.get("api/users/" + user_id + "/projects.json").success(function(data) {
+     vm.projects = data;
+    });
+
     vm.rangeDescriptor = 'all';
 
     vm.new = function () {
       var now = new Date();
       vm.newLog = {
-        'start_time': now
+        'start_time': now,
       }
     };
 

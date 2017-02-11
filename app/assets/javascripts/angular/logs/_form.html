@@ -12,10 +12,11 @@
 </div>
 
 <div class="col-xs-2">
-  <input class="form-control" type="text" ng-model="log.project.project_name" required>
+  <select class="form-control" ng-model="log.project_id" ng-init="log.project_id = projects[0].project.id">
+    <option ng-repeat="project in projects" ng-hide="project.id == 'undefined'" value="{{ project.id }}">{{ project.project_name }}</option>
+  </select>
 </div>
 
-  <input type="hidden" ng-model="log.project_id" required>
 
 <div class="col-xs-2">
   <input class="form-control" type="decimal" step="0.01" min="0" max="999" ng-model="log.earning_in_rs" float-converter required>

@@ -8,7 +8,8 @@
       restrict: 'E',
       controller: 'LogFormController',
       scope: {
-        log: '=log'
+        log: '=log',
+        projects: '=projects'
       },
       templateUrl: 'angular/logs/_form.html'
     }

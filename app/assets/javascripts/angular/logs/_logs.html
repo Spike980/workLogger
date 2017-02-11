@@ -40,7 +40,7 @@
       <span ng-if="vm.newLog">
         <li class="list-group-item row">
           <form class="form-inline" ng-submit="vm.create()">
-            <log-form log="vm.newLog"></log-form>
+            <log-form log="vm.newLog" projects="vm.projects"></log-form>
             <div class="col-xs-3">
               <button ng-click="vm.newCancel()" class="btn">Cancel</button>
               <button type="submit" class="btn btn-primary">Create</button>
@@ -48,6 +48,7 @@
           </form>
         </li>
       </span>
+
 
       <li ng-repeat="log in vm.logs | dateRange:'start_time':vm.rangeDescriptor | orderBy: '-start_time'"
           class="list-group-item row">

@@ -35,6 +35,8 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
+
+    <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
   </head>
 
   <body data-ng-app='app' ng-controller="ApplicationController">
@@ -50,7 +52,7 @@
           </button>
 
           <a class="navbar-brand" ui-sref="jogs">
-            <%= image_tag 'logo.png', id: 'logo' %> 
+            <%= image_tag 'logo.png', id: 'logo' %> <span id="brand-name">Work Logger</span> 
           </a>
 
           <ul ng-if="currentUser" class="nav navbar-nav navbar-left">

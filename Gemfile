@@ -33,6 +33,7 @@ group :development, :test do
   # gem 'annotate'
   # gem 'heroku_san'
   # gem 'debase'
+  gem 'byebug'
 end
 
 # For Heroku

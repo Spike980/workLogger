@@ -3,15 +3,23 @@ class Api::LogsController < ApiController
   before_filter :set_user
 
   def index
-    respond_with :api, @user.logs.all
+    respond_with :api, @user.logs.all.as_json(include: :project)
   end
 
   def create
-    respond_with :api, @user.logs.create(log_params), :location => nil
+    @logs = @user.logs.build(log_params)
+    @project = Project.create(project_name: params[:project][:project_name])
+    @logs.project_id = @project.id
+    @logs.save 
+    respond_with :api, @logs.as_json(include: :project), :location => nil
   end
 
   def update
-    respond_with :api, @user.logs.update(params[:id], log_params)
+    @logs = @user.logs.update(params[:id], log_params)
+    @project = Project.find(params[:project_id])
+    @project.project_name = params[:project][:project_name]
+    @project.save
+    respond_with :api, @logs
   end
 
   def destroy

@@ -1,4 +1,4 @@
-<div class="col-xs-3">
+<div class="col-xs-2">
   <span class="dropdown" is-open="dropdownOpen">
     <div class="input-group dropdown-toggle">
       <input type="datetime" datetime-converter class="form-control" data-ng-model="log.start_time" required>
@@ -10,6 +10,12 @@
     </ul>
   </span>
 </div>
+
+<div class="col-xs-2">
+  <input class="form-control" type="text" ng-model="log.project.project_name" required>
+</div>
+
+  <input type="hidden" ng-model="log.project_id" required>
 
 <div class="col-xs-2">
   <input class="form-control" type="decimal" step="0.01" min="0" max="999" ng-model="log.earning_in_rs" float-converter required>

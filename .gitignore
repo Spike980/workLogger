@@ -2,7 +2,6 @@
 .DS_Store
 .idea
 .rvmrc
-config/database.yml
 db/schema.rb
 log/*
 test

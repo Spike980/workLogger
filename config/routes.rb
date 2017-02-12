@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'landing/index'
+
   namespace :api do
   get 'projects/index'
   end
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     delete 'api_tokens', to: 'api_tokens#destroy'
   end
 
-  root 'welcome#angular'
+  get '/app' => 'welcome#angular'
+  root 'landing#index'
 
 end

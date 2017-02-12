@@ -3,10 +3,10 @@
   <div class="panel panel-info col-xs-12">
 
     <div class="row panel-heading">
-      <div class="col-xs-2">
+      <div class="col-xs-2 col-xs-offset-1">
         <strong>Project Name</strong>
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-2 col-xs-offset-9">
         <button ng-click="vm.new()" type="button" class="btn btn-success">
           <i class="fa fa-plus-circle fa-lg"></i>
           New
@@ -20,7 +20,7 @@
         <li class="list-group-item row">
           <form class="form-inline" ng-submit="vm.create()">
             <project-form project="vm.newProject"></project-form>
-            <div class="col-xs-3">
+            <div class="col-xs-3 col-xs-offset-1">
               <button ng-click="vm.newCancel()" class="btn">Cancel</button>
               <button type="submit" class="btn btn-primary">Create</button>
             </div>
@@ -32,10 +32,10 @@
           class="list-group-item row">
 
           <span ng-if="project != vm.editedProjectMarker">
-            <div class="col-xs-2">
+            <div class="col-xs-2 col-xs-offset-1">
               {{ project.project_name }}
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-2 col-xs-offset-6">
               <button ng-click="vm.edit(project)" type="button" class="btn"><i class="fa fa-pencil fa-lg"></i></button>
               <button confirmed-click="vm.destroy(project)" confirm-click="Are you sure?" type="button" class="btn btn-danger"><i class="fa fa-trash-o fa-lg"></i>
               </button>

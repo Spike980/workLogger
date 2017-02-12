@@ -1,0 +1,44 @@
+<div ng-controller="ProjectReportController as vm">
+
+  <h3>Weekly Reports</h3>
+
+  <div class="panel panel-info col-xs-12">
+    <div class="row panel-heading">
+      <div class="col-xs-2">
+        Statistics by week
+      </div>
+    </div>
+
+    <ul class="list-group">
+      <div class="row panel-heading">
+        <div class="col-xs-3">
+          <strong>Project</strong>
+        </div>
+        <div class="col-xs-3">
+          <strong>Total Earnings (Rupees)</strong>
+        </div>
+        <div class="col-xs-3">
+          <strong>Total Time Spent Working (Hours)</strong>
+        </div>
+        <div class="col-xs-3">
+          <strong>Average Earning (Rs./hr)</strong>
+        </div>
+      </div>
+      <li ng-repeat="project in vm.projects_rep | orderBy:'project.name'" class="list-group-item row">
+      <div class="col-xs-3">
+        {{ project.name }}
+      </div>
+      <div class="col-xs-3">
+        {{ project.total_earned | number:2 }}
+      </div>
+      <div class="col-xs-3">
+        {{ project.time_spent_working | number:2 }}
+      </div>
+      <div class="col-xs-3">
+        {{ project.average_earning | number:2 }}
+      </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

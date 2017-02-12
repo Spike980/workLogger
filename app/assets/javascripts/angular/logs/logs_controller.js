@@ -15,7 +15,6 @@
     var user_id = $scope.currentUserService.getCurrentUser().user_id
     $http.get("api/users/" + user_id + "/projects.json").success(function(data) {
      vm.projects = data;
-     console.log(vm.projects);
     });
 
     vm.rangeDescriptor = 'all';

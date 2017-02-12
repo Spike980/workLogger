@@ -9,6 +9,7 @@ angular.module('app',
     'app.projects',
     'app.login',
     'app.report',
+    'app.report_project',
     'app.users'
   ]);
 
@@ -22,4 +23,5 @@ angular.module('app.projects', [
 ]);
 angular.module('app.login', []);
 angular.module('app.report', []);
+angular.module('app.report_project', []);
 angular.module('app.users', []);

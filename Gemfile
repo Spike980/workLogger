@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+ruby "2.3.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 gem 'bcrypt'
@@ -38,6 +39,6 @@ end
 
 # For Heroku
 group :production do
-  gem 'unicorn'
+  gem 'puma'
   gem 'rails_12factor'
 end

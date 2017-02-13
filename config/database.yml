@@ -8,8 +8,8 @@ default: &default
   pool: <%= ENV["POSTGRESQL_MAX_CONNECTIONS"] || 5 %>
   username: <%= user %>
   password: <%= password %>
-  host: <%= ENV["#POSTGRESQL_SERVICE_HOST"] %>
-  port: <%= ENV["#POSTGRESQL_SERVICE_PORT"] %>
+  host: <%= ENV["POSTGRESQL_SERVICE_HOST"] %>
+  port: <%= ENV["POSTGRESQL_SERVICE_PORT"] %>
   database: <%= ENV["POSTGRESQL_DATABASE"] %>
 
 development:
